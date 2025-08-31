@@ -2,8 +2,10 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
-  tags: []
+  serializedVersion: 3
+  tags:
+  - Path
+  - Spike
   layers:
   - Default
   - TransparentFX
@@ -11,7 +13,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - PostProcessing
   - 
   - 
   - 
@@ -41,3 +43,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 2289833303
+    locked: 0
+  - name: GamePlay
+    uniqueID: 2042112931
+    locked: 0
+  - name: ForeGround
+    uniqueID: 2953968957
+    locked: 0
+  m_RenderingLayers:
+  - Default
