@@ -1,5 +1,4 @@
 using System.Collections;
-using System.IO;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -59,10 +58,11 @@ public class PlayerController : MonoBehaviour
     void HandleMobileInput()
     {
         // Koppintás váltás
-        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
+        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)//(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) 
         {
             onInner = !onInner;
             targetRadius = onInner ? innerRadius : outerRadius;
+            GameManager.Instance.score++; //SCORE
         }
 
         ChangeRadius();
@@ -70,10 +70,11 @@ public class PlayerController : MonoBehaviour
 
     void HandleDevInput()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+        if (Mouse.current.leftButton.wasPressedThisFrame)//(Input.GetMouseButtonDown(0))
         {
             onInner = !onInner;
             targetRadius = onInner ? innerRadius : outerRadius;
+            GameManager.Instance.score++; //SCORE
         }
 
         ChangeRadius();
@@ -101,7 +102,7 @@ public class PlayerController : MonoBehaviour
                 Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
             }
 
-            Debug.Log("Ending Sequence");
+            //Debug.Log("Ending Sequence");
             GameManager.Instance.EndingSequence();
 
             gameObject.SetActive(false);

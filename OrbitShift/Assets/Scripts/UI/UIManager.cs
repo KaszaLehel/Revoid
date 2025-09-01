@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    //[SerializeField] private TextMeshProUGUI touchText;
-    [SerializeField] private GameObject menuObject;
     [SerializeField] private GameObject backgroundCoin;
-    [SerializeField] private GameObject endingScreen;
+    [SerializeField] private GameObject MainMenu;
+    [SerializeField] private GameObject endingMenu;
 
-    [Header("Animators Settings")]
-    [SerializeField] private Animator UpperAnimator;
-    [SerializeField] private Animator UnderAnimator;
+    [Header("Texts")]
+    [SerializeField] private TextMeshProUGUI bestScoreText;
+
+    [Header("Animation Settings")]
+    [SerializeField] private Animator MainMenuAnimator;
 
     public static UIManager Instance { get; private set; }
     void Awake()
@@ -28,31 +29,36 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        endingScreen.SetActive(false);
+        MainMenu.SetActive(true);
         backgroundCoin.SetActive(false);
+        endingMenu.SetActive(false);
+
+        bestScoreText.SetText("Best Score: {0}", GameManager.Instance.bestScore);
     }
 
-    public void EndingScreenActivate()
-    {
-        endingScreen.SetActive(true);
-    }
+
+
+    #region Dissapear Main Menu
 
     public void DisappearMenu()
     {
-
-        StartCoroutine(DissapearMainMenu());
-        
-    }
-
-    IEnumerator DissapearMainMenu()
-    {
         backgroundCoin.SetActive(true);
-
-        //ITT KELL BEALLUTANI AZ ANIMALT ELTUNEST
-        UpperAnimator.SetTrigger("SlideOut");
-        UnderAnimator.SetTrigger("SlideUnder");
-        yield return new WaitForSeconds(1f);
-        
-        menuObject.SetActive(false);
+        StartCoroutine(SlideOutMenu());
     }
+
+    IEnumerator SlideOutMenu()
+    {
+        MainMenuAnimator.SetTrigger("SlideOut");
+        yield return new WaitForSeconds(1f);
+        MainMenu.SetActive(false);
+    }
+    #endregion
+
+
+    #region Ending screen
+    public void EndingScreenActivate()
+    {
+        endingMenu.SetActive(true);
+    }
+    #endregion
 }

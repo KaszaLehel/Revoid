@@ -25,24 +25,35 @@ public class SceneController : MonoBehaviour
     void Start()
     {
         TransitionUI.SetActive(true);
+        StartCoroutine(DisolveTransition());
     }
 
     public void ReloadScene()
     {
         isTransition = true;
+        TransitionUI.SetActive(true);
         StartCoroutine(Load());
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     IEnumerator Load()
     {
+        //yield return new WaitForSeconds(1);
+
         anim.SetTrigger("End");
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
         //anim.SetTrigger("Start");
         //yield return new WaitForSeconds(1);
         //UIManager.Instance.ReactivateUI();
         //TransitionUI.SetActive(false);
-        //isTransition = false;
+        isTransition = false;
+    }
+
+    IEnumerator DisolveTransition()
+    {
+        yield return new WaitForSeconds(1.2f);
+        TransitionUI.SetActive(false);
     }
 }

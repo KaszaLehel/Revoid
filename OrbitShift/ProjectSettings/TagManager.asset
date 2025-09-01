@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Path
   - Spike
+  - UI
   layers:
   - Default
   - TransparentFX
