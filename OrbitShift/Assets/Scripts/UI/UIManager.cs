@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Texts")]
     [SerializeField] private TextMeshProUGUI bestScoreText;
+    [SerializeField] private TextMeshProUGUI crystalPointText;
 
     [Header("Animation Settings")]
     [SerializeField] private Animator MainMenuAnimator;
@@ -34,6 +35,7 @@ public class UIManager : MonoBehaviour
         endingMenu.SetActive(false);
 
         bestScoreText.SetText("Best Score: {0}", GameManager.Instance.bestScore);
+        crystalPointText.SetText("{0}", GameManager.Instance.allCrystalsPoint);
     }
 
 

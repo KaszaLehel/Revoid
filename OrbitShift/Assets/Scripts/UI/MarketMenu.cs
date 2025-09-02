@@ -2,17 +2,23 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SettingsMenu : MonoBehaviour
+public class MarketMenu : MonoBehaviour
 {
-    [SerializeField] private Animator settingsAnimator;
+
+    [SerializeField] private Animator marketAnimator;
     [SerializeField] private Button backButton;
     [SerializeField] private AudioClip clickAudio;
 
-    public void CloseSettingsMenu()
+    public void CloseMarketMenu()
     {
         SoundEfectsManager.Instance.PlaySoundFX(clickAudio, transform, 1f);
-        if (settingsAnimator != null)
+
+        if (marketAnimator != null)
+        {
+            Debug.Log("Clicked");
             StartCoroutine(Close());
+        }
+
         else
         {
             gameObject.SetActive(false);
@@ -22,9 +28,10 @@ public class SettingsMenu : MonoBehaviour
     IEnumerator Close()
     {
         backButton.interactable = false;
-        settingsAnimator.SetTrigger("Disolve");
+
+        //ANIMATION
+
         yield return new WaitForSeconds(1f);
         backButton.interactable = true;
-        gameObject.SetActive(false);
     }
 }

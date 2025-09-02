@@ -22,6 +22,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speedIncreaseStep = 5f;
     [SerializeField] private float smoothDuration = 2f;
 
+    [Header("Sound Clips")]
+    [SerializeField] private AudioClip switchSound;
+    [SerializeField] private AudioClip deathSound;
+
     private float angle = 270f;
     private float currentRadius;
     private float targetRadius;
@@ -63,6 +67,9 @@ public class PlayerController : MonoBehaviour
             onInner = !onInner;
             targetRadius = onInner ? innerRadius : outerRadius;
             GameManager.Instance.score++; //SCORE
+
+
+            if(switchSound != null) SoundEfectsManager.Instance.PlaySoundFX(switchSound, transform, 1f);
         }
 
         ChangeRadius();
@@ -75,6 +82,8 @@ public class PlayerController : MonoBehaviour
             onInner = !onInner;
             targetRadius = onInner ? innerRadius : outerRadius;
             GameManager.Instance.score++; //SCORE
+            
+            if (switchSound != null) SoundEfectsManager.Instance.PlaySoundFX(switchSound, transform, 1f);
         }
 
         ChangeRadius();
@@ -82,14 +91,13 @@ public class PlayerController : MonoBehaviour
 
     void ChangeRadius()
     {
-        //currentRadius = Mathf.Lerp(currentRadius, targetRadius, Time.deltaTime * switchSpeed);
         currentRadius = Mathf.MoveTowards(currentRadius, targetRadius, switchSpeed * Time.unscaledDeltaTime);
 
         angle += speed * Time.unscaledDeltaTime;
         angle %= 360f;
 
         float rad = angle * Mathf.Deg2Rad;
-        Vector3 offset = new Vector3(Mathf.Cos(rad), Mathf.Sin(rad), 0) * currentRadius;
+        Vector3 offset = new Vector3(Mathf.Cos(rad), Mathf.Sin(rad), 0) * currentRadius; 
         transform.position = trackCenter.position + offset;
     }
 
@@ -101,6 +109,8 @@ public class PlayerController : MonoBehaviour
             {
                 Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
             }
+
+            if(deathSound != null) SoundEfectsManager.Instance.PlaySoundFX(deathSound, transform, 1f);
 
             //Debug.Log("Ending Sequence");
             GameManager.Instance.EndingSequence();

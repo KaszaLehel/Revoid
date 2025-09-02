@@ -5,13 +5,18 @@ using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private AudioClip clickAudio;
+
     public bool noGameRuning = true;
     public bool gameEnded = false;
     private bool clicked = false;
 
-    public int score = 0;
 
+    public int score = 0;
     public int bestScore { get; private set; }
+
+    public int crystalsPoint = 0;
+    public int allCrystalsPoint { get; private set; }
 
     public static GameManager Instance { get; private set; }
     void Awake()
@@ -24,6 +29,8 @@ public class GameManager : MonoBehaviour
         Instance = this;
 
         bestScore = PlayerPrefs.GetInt("BestScore", 0);
+        allCrystalsPoint = PlayerPrefs.GetInt("CrystalPoints", 0);
+
     }
 
     void Update()
@@ -54,12 +61,14 @@ public class GameManager : MonoBehaviour
             if (gameEnded)
             {
                 //Debug.Log("RestartGame");
+                SoundEfectsManager.Instance.PlaySoundFX(clickAudio, transform, 1f);
                 clicked = true;
                 SceneController.Instance.ReloadScene();
             }
             else
             {
                 //Debug.Log("StartGame");
+                SoundEfectsManager.Instance.PlaySoundFX(clickAudio, transform, 1f);
                 clicked = true;
                 StartCoroutine(StartGame());
                 //noGameRuning = false;
@@ -76,11 +85,13 @@ public class GameManager : MonoBehaviour
 
             if (gameEnded)
             {
+                SoundEfectsManager.Instance.PlaySoundFX(clickAudio, transform, 1f);
                 clicked = true;
                 SceneController.Instance.ReloadScene();
             }
             else
             {
+                SoundEfectsManager.Instance.PlaySoundFX(clickAudio, transform, 1f);
                 clicked = true;
                 StartCoroutine(StartGame());
             }
@@ -101,13 +112,18 @@ public class GameManager : MonoBehaviour
         gameEnded = true;
         StartCoroutine(EndingPanel());
 
+        allCrystalsPoint += crystalsPoint;
+        PlayerPrefs.SetInt("CrystalPoints", allCrystalsPoint);
+
+
         if (score > bestScore)
         {
             bestScore = score;
             PlayerPrefs.SetInt("BestScore", bestScore);
-            PlayerPrefs.Save();
             Debug.Log("Új Best Score: " + bestScore);
         }
+        
+        PlayerPrefs.Save();
     }
     
     private IEnumerator EndingPanel()

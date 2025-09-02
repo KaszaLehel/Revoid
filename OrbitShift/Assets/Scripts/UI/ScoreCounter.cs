@@ -8,7 +8,8 @@ public class ScoreCounter : MonoBehaviour
 
     [SerializeField, Range(0f, 1f)] private float colorStrength = 0.5f;
 
-    private int nextThreshold = 10;
+    [SerializeField] private int treshhold = 10;
+
     private Vector3 spawnpoint = Vector3.zero;
 
     void Update()
@@ -20,13 +21,13 @@ public class ScoreCounter : MonoBehaviour
     {
         scoreText.SetText("{0}", GameManager.Instance.score);
 
-        if (GameManager.Instance.score == nextThreshold)
+        if (GameManager.Instance.score == treshhold)
         {
             SpawnParticle();
-            if (nextThreshold == 10) nextThreshold = 40;
+            if (treshhold == 10) treshhold = 20;
             else
             {
-                nextThreshold += 20;
+                treshhold += 15;
             }
             
         }
