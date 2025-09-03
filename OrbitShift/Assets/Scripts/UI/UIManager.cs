@@ -38,6 +38,11 @@ public class UIManager : MonoBehaviour
         crystalPointText.SetText("{0}", GameManager.Instance.allCrystalsPoint);
     }
 
+    public void RefreshCrystals()
+    {
+        crystalPointText.SetText("{0}", GameManager.Instance.allCrystalsPoint);
+    }
+
 
 
     #region Dissapear Main Menu

@@ -15,7 +15,7 @@ public class MarketMenu : MonoBehaviour
 
         if (marketAnimator != null)
         {
-            Debug.Log("Clicked");
+            //Debug.Log("Clicked");
             StartCoroutine(Close());
         }
 
@@ -28,10 +28,9 @@ public class MarketMenu : MonoBehaviour
     IEnumerator Close()
     {
         backButton.interactable = false;
-
-        //ANIMATION
-
+        marketAnimator.SetTrigger("Disolve");
         yield return new WaitForSeconds(1f);
         backButton.interactable = true;
+        gameObject.SetActive(false);
     }
 }

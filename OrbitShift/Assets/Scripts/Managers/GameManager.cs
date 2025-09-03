@@ -122,13 +122,24 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("BestScore", bestScore);
             Debug.Log("Új Best Score: " + bestScore);
         }
-        
+
         PlayerPrefs.Save();
     }
-    
+
     private IEnumerator EndingPanel()
     {
         yield return new WaitForSeconds(1f);
         UIManager.Instance.EndingScreenActivate();
+    }
+
+
+    public void MinusCrystal(int amounth)
+    {
+        if (allCrystalsPoint >= amounth)
+        {
+            allCrystalsPoint -= amounth;
+            Debug.Log(allCrystalsPoint);
+        }
+        return;
     }
 }
