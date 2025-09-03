@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     [Header("Texts")]
     [SerializeField] private TextMeshProUGUI bestScoreText;
     [SerializeField] private TextMeshProUGUI crystalPointText;
+    [SerializeField] private TextMeshProUGUI shopCrystalText;
 
     [Header("Animation Settings")]
     [SerializeField] private Animator MainMenuAnimator;
@@ -36,11 +37,13 @@ public class UIManager : MonoBehaviour
 
         bestScoreText.SetText("Best Score: {0}", GameManager.Instance.bestScore);
         crystalPointText.SetText("{0}", GameManager.Instance.allCrystalsPoint);
+        shopCrystalText.SetText("{0}", GameManager.Instance.allCrystalsPoint);
     }
 
     public void RefreshCrystals()
     {
         crystalPointText.SetText("{0}", GameManager.Instance.allCrystalsPoint);
+        shopCrystalText.SetText("{0}", GameManager.Instance.allCrystalsPoint);
     }
 
 
