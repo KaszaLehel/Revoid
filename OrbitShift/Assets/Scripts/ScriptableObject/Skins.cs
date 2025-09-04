@@ -3,7 +3,8 @@ using UnityEngine;
 public enum SkinType
 {
     Color,
-    Effect
+    Effect,
+    Epic,
 }
 
 [CreateAssetMenu(fileName = "Skins", menuName = "Scriptable Objects/Skins")]
@@ -16,5 +17,6 @@ public class Skins : ScriptableObject
     public int price;
     public bool unlockedByDefault = false;
     public GameObject effectPrefab; // Ha Effect típus
+    public GameObject epicEffectPrefab;
     
 }
