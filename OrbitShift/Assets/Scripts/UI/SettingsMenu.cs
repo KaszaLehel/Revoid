@@ -21,8 +21,11 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] private string emailAddress = "kaszalehel@gmail.com";
     [SerializeField] private string subject = "Revoid - Contact";
 
-    [Header("Privacy Settings")]
+    [Header("Explore Settings")]
     [SerializeField] private string url = "https://shadowscythe-games.itch.io/";
+
+    [Header("Privacy Settings")]
+    [SerializeField] private string privacyUrl = "https://sites.google.com/view/revoid-privacy-policy";
 
     void Start()
     {
@@ -86,9 +89,15 @@ public class SettingsMenu : MonoBehaviour
     }
 
 
+    public void ExploreOnClick()
+    {
+        Debug.Log("Explore Games");
+        Application.OpenURL(url);
+    }
+
     public void PrivacyOnClick()
     {
         Debug.Log("Privacy");
-        Application.OpenURL(url);
+        Application.OpenURL(privacyUrl);
     }
 }
