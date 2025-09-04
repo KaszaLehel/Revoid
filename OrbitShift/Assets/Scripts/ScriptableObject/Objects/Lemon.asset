@@ -16,6 +16,7 @@ MonoBehaviour:
   effectName: Color
   skinType: 0
   unlockedColor: {r: 1, g: 0.98039216, b: 0.8039216, a: 1}
-  price: 1
+  price: 200
   unlockedByDefault: 0
   effectPrefab: {fileID: 0}
+  epicEffectPrefab: {fileID: 0}

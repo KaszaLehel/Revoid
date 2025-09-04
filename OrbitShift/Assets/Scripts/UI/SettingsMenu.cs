@@ -1,5 +1,7 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class SettingsMenu : MonoBehaviour
@@ -13,6 +15,14 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] private Sprite soundOnImage;
     [SerializeField] private Sprite soundOffImage;
     private bool isOn = true;
+
+    [Header("Contact Settings")]
+    [SerializeField] private Button contactButton;
+    [SerializeField] private string emailAddress = "kaszalehel@gmail.com";
+    [SerializeField] private string subject = "Revoid - Contact";
+
+    [Header("Privacy Settings")]
+    [SerializeField] private string url = "https://shadowscythe-games.itch.io/";
 
     void Start()
     {
@@ -62,5 +72,23 @@ public class SettingsMenu : MonoBehaviour
         yield return new WaitForSeconds(1f);
         backButton.interactable = true;
         gameObject.SetActive(false);
+    }
+
+
+    public void ContactOnClick()
+    {
+        if (contactButton != null)
+        {
+            Debug.Log("MAILTO");
+            string mailto = $"mailto:{emailAddress}?subject={UnityWebRequest.EscapeURL(subject)}";
+            Application.OpenURL(mailto);
+        }
+    }
+
+
+    public void PrivacyOnClick()
+    {
+        Debug.Log("Privacy");
+        Application.OpenURL(url);
     }
 }

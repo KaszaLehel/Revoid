@@ -7,6 +7,9 @@ public class PlayerSkinManager : MonoBehaviour
     [Header("Player Sprite")]
     [SerializeField] private SpriteRenderer playerSprite;
 
+    [Header("Path Settings")]
+    [SerializeField] private GameObject path; 
+
     private GameObject currentEffect;
 
     private void Awake()

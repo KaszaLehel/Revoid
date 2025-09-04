@@ -16,6 +16,7 @@ MonoBehaviour:
   effectName: Puls
   skinType: 1
   unlockedColor: {r: 1, g: 0.84313726, b: 0, a: 1}
-  price: 1
+  price: 700
   unlockedByDefault: 0
   effectPrefab: {fileID: 4872258452555328056, guid: 4c9f9442ba4bcf1409b46028e26d1535, type: 3}
+  epicEffectPrefab: {fileID: 0}

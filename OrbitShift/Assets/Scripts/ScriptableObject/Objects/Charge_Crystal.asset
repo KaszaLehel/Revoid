@@ -16,6 +16,7 @@ MonoBehaviour:
   effectName: Charge
   skinType: 1
   unlockedColor: {r: 0, g: 1, b: 0.8509804, a: 1}
-  price: 1
+  price: 500
   unlockedByDefault: 0
   effectPrefab: {fileID: 7441680950863737525, guid: e043e382cb5a9814d98a5fb52f33f9fd, type: 3}
+  epicEffectPrefab: {fileID: 0}

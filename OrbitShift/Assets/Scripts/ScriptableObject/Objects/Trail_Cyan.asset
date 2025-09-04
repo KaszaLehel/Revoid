@@ -16,6 +16,7 @@ MonoBehaviour:
   effectName: Trail
   skinType: 1
   unlockedColor: {r: 0, g: 1, b: 0.8509804, a: 1}
-  price: 1
+  price: 400
   unlockedByDefault: 0
   effectPrefab: {fileID: 9209810623365094526, guid: b1e937fcf2dfc774f9e1adb1afa80f64, type: 3}
+  epicEffectPrefab: {fileID: 0}
