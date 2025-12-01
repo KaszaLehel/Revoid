@@ -18,7 +18,7 @@ public class SettingsMenu : MonoBehaviour
 
     [Header("Contact Settings")]
     [SerializeField] private Button contactButton;
-    [SerializeField] private string emailAddress = "kaszalehel@gmail.com";
+    [SerializeField] private string emailAddress = "gamesshadowscythe@gmail.com";
     [SerializeField] private string subject = "Revoid - Contact";
 
     [Header("Explore Settings")]

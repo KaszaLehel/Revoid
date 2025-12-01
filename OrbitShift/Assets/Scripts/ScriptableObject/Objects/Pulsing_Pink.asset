@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pulsing_Pink
   m_EditorClassIdentifier: Assembly-CSharp::Skins
   skinID: PinkPulsing
-  effectName: Puls
+  effectName: Pulse
   skinType: 1
   unlockedColor: {r: 1, g: 0.40392157, b: 1, a: 1}
   price: 700

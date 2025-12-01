@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pulsing_Gold
   m_EditorClassIdentifier: Assembly-CSharp::Skins
   skinID: GoldPulsing
-  effectName: Puls
+  effectName: Pulse
   skinType: 1
   unlockedColor: {r: 1, g: 0.84313726, b: 0, a: 1}
   price: 700
